@@ -28,6 +28,10 @@ function major(currentVersion) { // "[RELEASE-MAJOR X.0.0]"
 function beta(currentVersion, getCommitHash = getCommitHashModule) { // [RELEASE-beta 0.0.0-beta.X]
     const hash = getCommitHash();
     if(currentVersion.includes(hash)) return currentVersion;
+    if(currentVersion.includes("-beta.")) {
+        const [baseVersion] = currentVersion.split("-beta.");
+        return `${baseVersion}-beta.${hash}`;
+    }
 
     return `${currentVersion}-beta.${hash}`;
 }

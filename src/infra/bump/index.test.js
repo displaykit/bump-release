@@ -46,5 +46,10 @@ describe("bump", () => {
             expect(bump("beta", currentVersion, () => "COMMIT_HASH"))
                 .toEqual("10.0.0-beta.COMMIT_HASH");
         });
+        it("and the version is 10.0.0-beta.COMMIT_HASH, go to 10.0.0-beta.NEW_COMMIT_HASH", () => {
+            const currentVersion = "10.0.0-beta.COMMIT_HASH";
+            expect(bump("beta", currentVersion, () => "NEW_COMMIT_HASH"))
+                .toEqual("10.0.0-beta.NEW_COMMIT_HASH");
+        });
     });
 })
