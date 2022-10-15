@@ -26,7 +26,10 @@ function major(currentVersion) { // "[RELEASE-MAJOR X.0.0]"
 }
 
 function beta(currentVersion, getCommitHash = getCommitHashModule) { // [RELEASE-beta 0.0.0-beta.X]
-    return `${currentVersion}-beta.${getCommitHash()}`;
+    const hash = getCommitHash();
+    if(currentVersion.includes(hash)) return currentVersion;
+
+    return `${currentVersion}-beta.${hash}`;
 }
 
 const bumpNameToVersion = {
