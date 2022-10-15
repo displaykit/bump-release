@@ -1,12 +1,7 @@
 const path = require("path");
 const fs = require("fs");
-const readYamlFile = require('read-yaml-file');
+const { readFileBy } = require("./readFileBy");
 
-const readFile = {
-    yml: (packageFilePath) => readYamlFile.sync(packageFilePath),
-    yaml: (...args) => readFile.yml(...args),
-    json: (packageFilePath) => JSON.parse(fs.readFileSync(packageFilePath, { encoding: "utf-8" })),
-}
 
 module.exports = {
     resolverBase(
@@ -16,7 +11,7 @@ module.exports = {
     ) {
         const packageFileExt = packageFileName.split(".")[1];
         const packageFilePath = path.resolve(packagePath, packageFileName);
-        const packageFile = readFile[packageFileExt](packageFilePath);
+        const packageFile = readFileBy[packageFileExt](packageFilePath);
 
         return {
             packageVersion: packageFile.version,
