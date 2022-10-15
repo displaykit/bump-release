@@ -15,12 +15,18 @@ program.command('beta')
   .argument('<package location>', 'The path to the package that you want to release a beta version')
   .option('--resolver <char>', `The resolver that you want to use to bump your package, avaiable resolvers: ${Object.keys(resolvers)}`)
   .action((packagePath = './', options) => {
-    // TODO: Validate the options object by contract
-    const { packageCurrentVersion } = resolvers[options.resolver](packagePath);
-
+    const { packageVersion, updatePackageVersion } = resolvers[options.resolver](packagePath);
     releaseBetaController({
-      packageCurrentVersion
-    });
+      packageVersion,
+      updatePackageVersion
+    })
+      .then(({ newVersion }) => {
+        console.log("Package version updated 🎉");
+        console.log(`Now you can install the version:  ${newVersion}`);
+      })
+      .catch((err) => {
+        throw err;
+      })
   });
 
 

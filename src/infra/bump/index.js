@@ -1,3 +1,5 @@
+const { getCommitHash: getCommitHashModule } = require("../commitHash");
+
 function inc(n) { return Number(n) + 1}
 
 function patch(currentVersion) { // "[RELEASE-PATCH 0.0.X]"
@@ -23,14 +25,19 @@ function major(currentVersion) { // "[RELEASE-MAJOR X.0.0]"
     }, "");
 }
 
+function beta(currentVersion, getCommitHash = getCommitHashModule) { // [RELEASE-beta 0.0.0-beta.X]
+    return `${currentVersion}-beta.${getCommitHash()}`;
+}
+
 const bumpNameToVersion = {
     patch,
     minor,
     major,
+    beta,
 }
 
 module.exports = {
-    bump(version, currentVersion) {
-        return bumpNameToVersion[version](currentVersion);
+    bump(version, currentVersion, getCommitHashFn) {
+        return bumpNameToVersion[version](currentVersion, getCommitHashFn).trim().replace('\n', '');
     }
 }

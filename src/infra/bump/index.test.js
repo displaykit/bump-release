@@ -32,4 +32,14 @@ describe("bump", () => {
             expect(bump("major", currentVersion)).toEqual("11.0.0");
         });
     });
+    describe("when bumping to a beta", () => {
+        it("and the version is 1.0.0, go to 1.0.0-beta.COMMIT_HASH", () => {
+            const currentVersion = "1.0.0";
+            expect(bump("beta", currentVersion, () => "COMMIT_HASH")).toEqual("1.0.0-beta.COMMIT_HASH");
+        });
+        it("and the version is 10.0.0, go to 10.0.0-beta.COMMIT_HASH", () => {
+            const currentVersion = "10.0.0";
+            expect(bump("beta", currentVersion, () => "COMMIT_HASH")).toEqual("10.0.0-beta.COMMIT_HASH");
+        });
+    });
 })

@@ -1,10 +1,19 @@
+const { bump } = require("../../infra/bump")
 
 
 module.exports = {
-    releaseBetaController({
-        packageCurrentVersion
+    async releaseBetaController({
+        packageVersion,
+        updatePackageVersion
     }) {
-        console.log(packageCurrentVersion);
-        return { name: "releaseBetaController" };
+        const newVersion = bump("beta", packageVersion);
+        return updatePackageVersion(newVersion)
+            .then(() => {
+
+            })
+            .then(() => ({
+                newVersion,
+            }));
+        
     },
 }
