@@ -4,7 +4,6 @@ async function pushToGitHub({ newVersion }) {
     return execSync("git push --follow-tags");
 }
 
-
 module.exports = {
     pushToGitHub,
 }
