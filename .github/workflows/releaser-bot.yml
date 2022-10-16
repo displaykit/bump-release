@@ -24,7 +24,7 @@ jobs:
 
       # Reference: https://github.com/devsoutinho/flutter-labs/blob/main/.github/workflows/releaser-bot.yml#L30
       - name: "[RELEASE]"
-        if: contains(github.event.comment.body, '/release-')   # check the comment if it contains the keywords
+        if: contains(github.event.comment.body, '!release/') # support|major|minor|patch
         run: | 
           echo "IMPLEMENT ME"
           node ./chatbot.js ${{ github.event.comment.body }}
