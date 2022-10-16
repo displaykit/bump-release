@@ -1,4 +1,6 @@
-const { bump } = require("../../infra/bump")
+const { bump } = require("../../infra/bump");
+const { createNewVersionCommit } = require("../../infra/createNewVersionCommit");
+// const { createGitTags } = require("../../infra/createGitTags");
 
 
 module.exports = {
@@ -6,9 +8,19 @@ module.exports = {
         packageVersion,
         updatePackageVersion
     }) {
-        const newVersion = bump("beta", packageVersion);
+        const bumpType = "beta";
+        const newVersion = bump(bumpType, packageVersion);
+
         await updatePackageVersion(newVersion);
-        // git tag -a -m "My first action release" v1.1
+        // await updateChangelog();
+        await createNewVersionCommit({
+            newVersion,
+            bumpType,
+            commitMessage: "commit message",
+            commitBody: `## Changelog info...
+            lorem ipsum dorme ...`,
+        });
+        // await createGitTags();
         return {
             newVersion,
         };
