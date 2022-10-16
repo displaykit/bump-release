@@ -18,6 +18,7 @@ program.command('beta')
   .action((packagePath = './', options) => {
     const { packageVersion, updatePackageVersion } = resolvers[options.resolver](packagePath);
     releaseBetaController({
+      packageName: options.name || packagePath.split('/').pop(),
       packageVersion,
       updatePackageVersion
     })
