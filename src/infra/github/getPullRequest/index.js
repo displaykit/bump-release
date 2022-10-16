@@ -18,7 +18,12 @@ async function getPullRequest({
             console.log(res);
             return {
                 title: res.title,
-                body: res.body,
+                body: res.body.split('\n').reduce((acc, curr) => {
+                    if (acc.startsWith('# Changelog') || acc.startsWith('## Changelog')) {
+                        return acc + curr;
+                    }
+                    return acc;
+                }, ''),
             };
         });
 }
