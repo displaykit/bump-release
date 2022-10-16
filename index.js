@@ -16,14 +16,14 @@ program.command('beta')
   .option('--name <char>', `The name of the project that you are bumping. Default to to end folder of the location`)
   .option('--resolver <char>', `The resolver that you want to use to bump your package, avaiable resolvers: ${Object.keys(resolvers)}`)
   .action((packagePath = './', options) => {
-    const packageName = options.name || packagePath.split('/').pop();
+    const projectName = options.name || packagePath.split('/').pop();
     const { packageVersion, updatePackageVersion } = resolvers[options.resolver](packagePath);
     const commitMessage = "just a beta release";
     const commitBody = `## Changelog info...
     lorem ipsum dorme ...`;
 
     releaseBetaController({
-      packageName: packageName,
+      projectName,
       packageVersion,
       commitMessage,
       commitBody,
