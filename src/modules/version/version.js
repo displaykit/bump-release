@@ -19,7 +19,7 @@ module.exports = {
         await updatePackageVersion(newVersion); console.log("✅ - Package JSON Updated");
         await updateChangelog({
             newVersion,
-            changelogBody: commitBody,
+            commitBody,
         });
         const { commitTitle } = await createNewVersionCommit({
             newVersion,
