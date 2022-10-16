@@ -58,6 +58,7 @@ program.command('version')
       .then(({ newVersion }) => {
         console.log("✨ Package version updated with success! 🎉🎉🎉");
         console.log(`💻 Now you can install the version: ${newVersion}`);
+        // TODO: Comment on GitHub the new release avaiable.
       })
       .catch((err) => {
         throw err;
