@@ -1,0 +1,24 @@
+async function getPullRequest({
+    repositoryOwner,
+    repositoryName,
+    pullRequestNumber,
+    githubToken,
+}) {
+    return await fetch(`https://api.github.com/repos/${repositoryOwner}/${repositoryName}/pulls/${pullRequestNumber}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `token ${githubToken}`,
+        },
+    })
+        .then((response) => response.json())
+        .then(() => {
+            return {
+                title: 'Pull Request Title',
+            };
+        });
+}
+
+module.exports = {
+    getPullRequest,
+};

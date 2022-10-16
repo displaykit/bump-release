@@ -1,6 +1,7 @@
 const { Command } = require('commander');
 const pkg = require("./package.json");
 const { bumpTypes } = require("./src/infra/createNewVersionCommit");
+const { getPullRequest } = require("./src/infra/github/getPullRequest");
 const { versionController } = require("./src/modules/version/version");
 const resolvers = require("./src/resolvers");
 
@@ -17,10 +18,25 @@ program.command('version')
   .option('--type <char>', `The kind of the version that you want to bump. It can be: ${bumpTypes.join(', ')}`, 'beta')
   .option('--name <char>', `The name of the project that you are bumping. Default to to end folder of the location`)
   .option('--resolver <char>', `The resolver that you want to use to bump your package, avaiable resolvers: ${Object.keys(resolvers)}`)
-  .action((packagePath = './', options) => {
+  .option('--github-pull-request-number <char>', `Provide the number of the active pull request that you are working on`)
+  .option('--github-comment-token <char>', `???`)
+  // .option('--github-commit-token <char>', `???`)
+  .action(async (packagePath = './', options) => {
+    if(!options.resolver) throw new Error(`You need to specify a resolver, avaiable resolvers: ${Object.keys(resolvers)}`);
+
     const projectName = options.name || packagePath.split('/').pop();
     const { packageVersion, updatePackageVersion } = resolvers[options.resolver](packagePath);
-    const commitMessage = "just a beta release";
+    
+    const pullRequest = await getPullRequest({
+      repositoryOwner: 'devsoutinho',                  // TODO: Receive as parameter
+      repositoryName: 'bump-release',                  // TODO: Receive as parameter
+      pullRequestNumber: options.githubPullRequestNumber,
+      githubToken: '123' || process.env.GITHUB_TOKEN,  // TODO: Receive as parameter
+    });
+
+    console.log(pullRequest);
+
+    const commitMessage = pullRequest || options.message;
     const commitBody = `## Changelog info...
     lorem ipsum dorme ...`;
 
@@ -33,8 +49,8 @@ program.command('version')
       updatePackageVersion,
     })
       .then(({ newVersion }) => {
-        console.log("🏁 Package version updated 🎉");
-        console.log(`Now you can install the version:  ${newVersion}`);
+        console.log("✨ Package version updated with success! 🎉🎉🎉");
+        console.log(`💻 Now you can install the version: ${newVersion}`);
       })
       .catch((err) => {
         throw err;
