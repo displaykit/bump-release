@@ -5,5 +5,5 @@
 - You can add the new extension inside `src/infra/resolverBase/readFileBy.js`
     - The output must be a JSON with a key version 
 
-## ???
+## BLA?
 ...
