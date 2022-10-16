@@ -7,13 +7,10 @@ module.exports = {
         updatePackageVersion
     }) {
         const newVersion = bump("beta", packageVersion);
-        return updatePackageVersion(newVersion)
-            .then(() => {
-
-            })
-            .then(() => ({
-                newVersion,
-            }));
-        
+        await updatePackageVersion(newVersion);
+        // git tag -a -m "My first action release" v1.1
+        return {
+            newVersion,
+        };
     },
 }
