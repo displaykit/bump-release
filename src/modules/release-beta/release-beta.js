@@ -1,5 +1,6 @@
 const { bump } = require("../../infra/bump");
 const { createNewVersionCommit } = require("../../infra/createNewVersionCommit");
+const { pushToGitHub } = require("../../infra/pushToGitHub");
 // const { createGitTags } = require("../../infra/createGitTags");
 
 
@@ -22,7 +23,7 @@ module.exports = {
             lorem ipsum dorme ...`,
         });
         // await createGitTags();
-        // await pushToGitHub();
+        await pushToGitHub();
         return {
             newVersion,
         };
