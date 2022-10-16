@@ -12,9 +12,9 @@ async function getPullRequest({
         },
     })
         .then((response) => response.json())
-        .then(() => {
+        .then((res) => {
             return {
-                title: 'Pull Request Title',
+                title: res.title,
             };
         });
 }
