@@ -27,7 +27,7 @@ program.command('beta')
       packageVersion,
       commitMessage,
       commitBody,
-      updatePackageVersion
+      updatePackageVersion,
     })
       .then(({ newVersion }) => {
         console.log("🏁 Package version updated 🎉");

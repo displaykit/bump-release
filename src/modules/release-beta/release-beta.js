@@ -6,13 +6,12 @@ const { createGitTags } = require("../../infra/createGitTags");
 
 module.exports = {
     async releaseBetaController({
-        packageName,
+        projectName,
         packageVersion,
         commitMessage,
         commitBody,
         updatePackageVersion
     }) {
-        console.log(packageName);
         const bumpType = "beta";
         const newVersion = bump(bumpType, packageVersion);
 
@@ -21,7 +20,7 @@ module.exports = {
         await createNewVersionCommit({
             newVersion,
             bumpType,
-            projectName: "",
+            projectName,
             commitMessage,
             commitBody,
         });
