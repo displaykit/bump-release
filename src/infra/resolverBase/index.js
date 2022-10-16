@@ -44,6 +44,8 @@ ${changelogBody}
                     const changelogFileContent = fs.readFileSync(changelogFilePath, { encoding: "utf-8" });
                     const changelogFileNewContent = changelogNewContent + changelogFileContent;
                     fs.writeFileSync(changelogFilePath, changelogFileNewContent, { flag: 'w' });
+                } else {
+                    fs.writeFileSync(changelogFilePath, changelogNewContent, { flag: 'w' });
                 }
             }
         }
