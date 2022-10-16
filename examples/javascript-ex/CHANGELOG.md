@@ -1,4 +1,8 @@
 
+## 1.1.59
+
+This PR has a changelog that describes better what will really go to this new version
+                
 ## 1.1.58
 
 This PR has a changelog that describes better what will really go to this new version
