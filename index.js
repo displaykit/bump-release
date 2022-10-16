@@ -34,8 +34,6 @@ program.command('version')
       githubToken: process.env.GITHUB_TOKEN,  // TODO: Receive as parameter
     });
 
-    console.log(pullRequest);
-
     const commitMessage = pullRequest.title || options.message;
     const commitBody = pullRequest.body || options.body;
 
