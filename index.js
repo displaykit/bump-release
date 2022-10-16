@@ -36,7 +36,7 @@ program.command('version')
 
     console.log(pullRequest);
 
-    const commitMessage = pullRequest || options.message;
+    const commitMessage = pullRequest.title || options.message;
     const commitBody = `## Changelog info...
     lorem ipsum dorme ...`;
 
