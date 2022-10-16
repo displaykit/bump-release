@@ -1,6 +1,7 @@
-const pkg = require("./package.json");
 const { Command } = require('commander');
-const { releaseBetaController } = require("./src/modules/release-beta/release-beta");
+const pkg = require("./package.json");
+const { bumpTypes } = require("./src/infra/createNewVersionCommit");
+const { versionController } = require("./src/modules/version/version");
 const resolvers = require("./src/resolvers");
 
 const program = new Command();
@@ -10,9 +11,10 @@ program
   .description('CLI to release your project using GitHub, in a easy way')
   .version(pkg.version);
 
-program.command('beta')
+program.command('version')
   .description('Release a beta version of your project inside a specific folder')
   .argument('<package location>', 'The path to the package that you want to release a beta version')
+  .option('--type <char>', `The kind of the version that you want to bump. It can be: ${bumpTypes.join(', ')}`, 'beta')
   .option('--name <char>', `The name of the project that you are bumping. Default to to end folder of the location`)
   .option('--resolver <char>', `The resolver that you want to use to bump your package, avaiable resolvers: ${Object.keys(resolvers)}`)
   .action((packagePath = './', options) => {
@@ -22,8 +24,9 @@ program.command('beta')
     const commitBody = `## Changelog info...
     lorem ipsum dorme ...`;
 
-    releaseBetaController({
+    versionController({
       projectName,
+      bumpType: options.type,
       packageVersion,
       commitMessage,
       commitBody,

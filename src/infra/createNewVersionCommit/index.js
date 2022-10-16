@@ -30,4 +30,5 @@ ${commitBody}
 
 module.exports = {
     createNewVersionCommit,
+    bumpTypes: Object.keys(conventionalCommitTypeByVersion),
 };
