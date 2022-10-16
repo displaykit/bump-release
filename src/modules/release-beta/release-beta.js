@@ -22,9 +22,8 @@ module.exports = {
             newVersion,
             bumpType,
             projectName: "",
-            commitMessage: "just a beta release",
-            commitBody: `## Changelog info...
-            lorem ipsum dorme ...`,
+            commitMessage,
+            commitBody,
         });
         await createGitTags({ newVersion }); console.log("✅ - Create Git Tags");
         await pushToGitHub();  console.log("✅ - Pushed to GitHub with all tags");
