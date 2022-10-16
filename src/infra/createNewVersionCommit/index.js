@@ -5,7 +5,7 @@ const conventionalCommitTypeByVersion = {
     major: "feat",
     minor: "feat",
     patch: "fix",
-    beta: "feat",
+    beta: "beta",
 };
 function createNewVersionCommit({ 
     newVersion,
