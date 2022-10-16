@@ -18,7 +18,8 @@ function createNewVersionCommit({
         ? `(${projectName})`
         : ""
     const type = conventionalCommitTypeByVersion[bumpType];
-    const commitInfo = `${type}${scope}: ${commitMessage}
+    const commitTitle = `${type}${scope}: ${commitMessage}`;
+    const commitInfo = `${commitTitle}
 
 ${commitBody}
 
@@ -28,6 +29,7 @@ ${commitBody}
     execSync(`git commit -m '${commitInfo}'`, { encoding: "utf-8" });
 
     return {
+        commitTitle,
         commitInfo,
     };
 }
