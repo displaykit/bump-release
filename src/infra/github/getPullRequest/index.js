@@ -4,7 +4,9 @@ async function getPullRequest({
     pullRequestNumber,
     githubToken,
 }) {
-    return await fetch(`https://api.github.com/repos/${repositoryOwner}/${repositoryName}/pulls/${pullRequestNumber}`, {
+    const URL = `https://api.github.com/repos/${repositoryOwner}/${repositoryName}/pulls/${pullRequestNumber}`;
+    console.log(URL);
+    return await fetch(URL, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
