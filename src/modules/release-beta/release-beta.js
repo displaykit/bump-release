@@ -12,7 +12,7 @@ module.exports = {
         const bumpType = "beta";
         const newVersion = bump(bumpType, packageVersion);
 
-        await updatePackageVersion(newVersion);
+        await updatePackageVersion(newVersion); console.log("✅ - Package JSON Updated");
         // await updateChangelog();
         await createNewVersionCommit({
             newVersion,
@@ -23,7 +23,7 @@ module.exports = {
             lorem ipsum dorme ...`,
         });
         // await createGitTags();
-        await pushToGitHub();
+        await pushToGitHub(); console.log("✅ - Pushed to GitHub with all tags");
         return {
             newVersion,
         };
