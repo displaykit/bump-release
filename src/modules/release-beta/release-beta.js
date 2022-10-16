@@ -6,6 +6,7 @@ const { pushToGitHub } = require("../../infra/pushToGitHub");
 
 module.exports = {
     async releaseBetaController({
+        packageName,
         packageVersion,
         updatePackageVersion
     }) {
