@@ -26,7 +26,11 @@ module.exports = {
             },
             async updateChangelog({ newVersion, commitBody }) {
                 const changelogFilePath = path.resolve(packagePath, "CHANGELOG.md");
-                const changelogBody = commitBody.replaceAll('\r', '\n').split('\n');
+                const changelogBody = commitBody
+                    .replaceAll('\r', '\n')
+                    .split('\n')
+                    .slice(1)
+                    
                 console.log(changelogBody);
                 const changelogNewContent = `
 ## ${newVersion}
@@ -34,8 +38,8 @@ module.exports = {
 ${changelogBody}
                 `;
                 // TODO: Check if file exists
-                    // TODO: Read the content of the file
-                    // TODO: Add the new content on the top
+                // TODO: Read the content of the file
+                // TODO: Add the new content on the top
 
                 const changelogFileContent = changelogNewContent;
                 fs.writeFileSync(changelogFilePath, changelogFileContent, { flag: 'w' });
