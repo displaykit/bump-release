@@ -26,7 +26,7 @@ module.exports = {
             },
             async updateChangelog({ newVersion, commitBody }) {
                 const changelogFilePath = path.resolve(packagePath, "CHANGELOG.md");
-                const changelogBody = commitBody.split("\n").slice(1).join("\n");
+                const changelogBody = commitBody;
                 const changelogNewContent = `
 ## ${newVersion}
 
