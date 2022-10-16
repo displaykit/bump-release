@@ -1,5 +1,5 @@
 
-## 1.1.26
+## 1.1.27
 
-undefined
+# ChangelogThis PR has a changelog that describes better what will really go to this new version
                 

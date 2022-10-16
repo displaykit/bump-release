@@ -24,8 +24,9 @@ module.exports = {
 
                 fs.writeFileSync(packageFilePath, updatedContent);
             },
-            async updateChangelog({ newVersion, changelogBody }) {
+            async updateChangelog({ newVersion, commitBody }) {
                 const changelogFilePath = path.resolve(packagePath, "CHANGELOG.md");
+                const changelogBody = commitBody;
                 const changelogNewContent = `
 ## ${newVersion}
 
