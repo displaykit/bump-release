@@ -1,7 +1,7 @@
 const { bump } = require("../../infra/bump");
 const { createNewVersionCommit } = require("../../infra/createNewVersionCommit");
 const { pushToGitHub } = require("../../infra/pushToGitHub");
-// const { createGitTags } = require("../../infra/createGitTags");
+const { createGitTags } = require("../../infra/createGitTags");
 
 
 module.exports = {
@@ -24,8 +24,8 @@ module.exports = {
             commitBody: `## Changelog info...
             lorem ipsum dorme ...`,
         });
-        // await createGitTags();
-        await pushToGitHub(); console.log("✅ - Pushed to GitHub with all tags");
+        await createGitTags(); console.log("✅ - Create Git Tags");
+        await pushToGitHub();  console.log("✅ - Pushed to GitHub with all tags");
         return {
             newVersion,
         };
