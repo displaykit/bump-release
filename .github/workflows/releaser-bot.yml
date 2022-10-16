@@ -1,0 +1,25 @@
+name: PR comment
+on:
+  issue_comment:                                     
+    types: [created, edited, deleted]
+
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKENS }}
+  GITHUB_TOKEN: ${{ secrets.GH_TOKENS }}
+  GITHUB_PR_NUMBER: ${{ github.event.issue.number }}
+
+jobs:
+  comment_checker:
+    # if: contains(github.event.comment.html_url, '/pull/')    # check if the comments come from pull request, exclude those from issue.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Env
+        uses: devsoutinho/flutter-composite-action@v4.0.1
+      # Reference: https://github.com/devsoutinho/flutter-labs/blob/main/.github/workflows/releaser-bot.yml#L30
+      - name: "[RELEASE]"
+        if: contains(github.event.comment.body, '!release/')   # check the comment if it contains the keywords
+        run: | 
+          echo "IMPLEMENT ME"
+          node ./chatbot.js ${{ github.event.comment.body }}
