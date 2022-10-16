@@ -11,7 +11,7 @@ program
   .version(pkg.version);
 
 program.command('beta')
-  .description('Release a beta version of your project')
+  .description('Release a beta version of your project inside a specific folder')
   .argument('<package location>', 'The path to the package that you want to release a beta version')
   .option('--resolver <char>', `The resolver that you want to use to bump your package, avaiable resolvers: ${Object.keys(resolvers)}`)
   .action((packagePath = './', options) => {
