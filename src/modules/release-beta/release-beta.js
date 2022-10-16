@@ -10,6 +10,7 @@ module.exports = {
         packageVersion,
         updatePackageVersion
     }) {
+        console.log(packageName);
         const bumpType = "beta";
         const newVersion = bump(bumpType, packageVersion);
 
