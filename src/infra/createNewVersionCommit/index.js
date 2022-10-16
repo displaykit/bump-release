@@ -23,6 +23,7 @@ function createNewVersionCommit({
     execSync(`git commit -m '${type}${scope}: ${commitMessage}
 
 ${commitBody}
+
 > Version: ${newVersion}'`, { encoding: "utf-8" });
 
     return true;
