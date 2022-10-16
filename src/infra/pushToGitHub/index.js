@@ -1,7 +1,9 @@
 const { execSync } = require("child_process");
 
 async function pushToGitHub() {
-    return execSync("git push --follow-tags");
+    execSync("git push --follow-tags");
+    console.log("✅ - Pushed to GitHub with all tags")
+    return true;
 }
 
 module.exports = {
