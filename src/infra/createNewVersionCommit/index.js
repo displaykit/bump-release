@@ -28,7 +28,8 @@ ${commitBody}
 
     execSync(`git add .`, { encoding: "utf-8" });
     execSync(`git commit -F- <<EOF
-    ${commitInfo}`, { encoding: "utf-8" });
+    ${commitInfo}
+EOF`, { encoding: "utf-8" });
 
     return {
         commitTitle,
