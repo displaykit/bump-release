@@ -13,6 +13,7 @@ async function getPullRequest({
     })
         .then((response) => response.json())
         .then((res) => {
+            console.log(res);
             return {
                 title: res.title,
             };
