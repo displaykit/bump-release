@@ -30,7 +30,7 @@ module.exports = {
                 const changelogNewContent = `
 ## ${newVersion}
 
-${changelogBody}
+....${changelogBody}
                 `;
                 // TODO: Check if file exists
                     // TODO: Read the content of the file
