@@ -3,9 +3,9 @@ const { execSync } = require("child_process");
 
 const conventionalCommitTypeByVersion = {
     major: "feat",
-    patch: "feat",
+    minor: "feat",
+    patch: "fix",
     beta: "feat",
-    minor: "fix",
 };
 function createNewVersionCommit({ 
     newVersion,
