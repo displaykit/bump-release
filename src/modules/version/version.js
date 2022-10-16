@@ -17,15 +17,15 @@ module.exports = {
 
         await updatePackageVersion(newVersion); console.log("✅ - Package JSON Updated");
         // await updateChangelog();
-        await createNewVersionCommit({
+        const { commitInfo } = await createNewVersionCommit({
             newVersion,
             bumpType,
             projectName,
             commitMessage,
             commitBody,
         });
-        await createGitTags({ newVersion }); console.log("✅ - Create Git Tags");
-        await pushToGitHub();  console.log("✅ - Pushed to GitHub with all tags");
+        await createGitTags({ newVersion, commitInfo }); console.log("✅ - Create Git Tags");
+        await pushToGitHub(); console.log("✅ - Pushed to GitHub with all tags");
         return {
             newVersion,
         };
