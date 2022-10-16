@@ -28,7 +28,7 @@ program.command('version')
     const { packageVersion, updatePackageVersion } = resolvers[options.resolver](packagePath);
     
     const pullRequest = await getPullRequest({
-      repositoryOwner: 'devsoutinho',                  // TODO: Receive as parameter
+      repositoryOwner: 'displaykit',                  // TODO: Receive as parameter
       repositoryName: 'bump-release',                  // TODO: Receive as parameter
       pullRequestNumber: options.githubPullRequestNumber,
       githubToken: process.env.GITHUB_TOKEN,  // TODO: Receive as parameter
