@@ -24,10 +24,11 @@ module.exports = {
 
                 fs.writeFileSync(packageFilePath, updatedContent);
             },
-            async updateChangelog() {
+            async updateChangelog({ newVersion, changelogBody }) {
                 const changelogFilePath = path.resolve(packagePath, "CHANGELOG.md");
                 const changelogNewContent = `
-Mas vai rodando e vai ganhdno hihi
+## ${newVersion}
+${changelogBody}
                 `;
                 // const changelogFileContent = fs.readFileSync(changelogFilePath, { encoding: "utf-8" });
                 // const updatedContent = changelogFileContent
