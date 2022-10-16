@@ -24,7 +24,7 @@ program.command('beta')
       updatePackageVersion
     })
       .then(({ newVersion }) => {
-        console.log("Package version updated 🎉");
+        console.log("🏁 Package version updated 🎉");
         console.log(`Now you can install the version:  ${newVersion}`);
       })
       .catch((err) => {
