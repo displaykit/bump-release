@@ -27,7 +27,7 @@ module.exports = {
             async updateChangelog() {
                 const changelogFilePath = path.resolve(packagePath, "CHANGELOG.md");
                 const changelogNewContent = `
-                Mas vai rodando e vai ganhdno hihi
+Mas vai rodando e vai ganhdno hihi
                 `;
                 // const changelogFileContent = fs.readFileSync(changelogFilePath, { encoding: "utf-8" });
                 // const updatedContent = changelogFileContent
@@ -41,7 +41,7 @@ module.exports = {
                 //     .join("\n");
 
                 const changelogFileContent = changelogNewContent;
-                fs.writeFileSync(changelogFilePath, changelogFileContent, { flag: 'wx' });
+                fs.writeFileSync(changelogFilePath, changelogFileContent, { flag: 'w' });
             }
         }
     }
