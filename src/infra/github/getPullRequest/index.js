@@ -18,7 +18,7 @@ async function getPullRequest({
             return {
                 title: res.title,
                 body: res.body.split('\n').reduce((acc, curr) => {
-                    if (acc.startsWith('# Changelog') || acc.startsWith('## Changelog')) {
+                    if (acc.includes('Changelog') || curr.includes('Changelog')) {
                         return acc + curr;
                     }
                     return acc;
