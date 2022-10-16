@@ -10,13 +10,18 @@ env:
 
 jobs:
   comment_checker:
-    # if: contains(github.event.comment.html_url, '/pull/')    # check if the comments come from pull request, exclude those from issue.
+    if: contains(github.event.comment.html_url, '/pull/')    # check if the comments come from pull request, exclude those from issue.
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Env
-        uses: devsoutinho/flutter-composite-action@v4.0.1
+      ## [Common_CI_Steps]
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18
+      ## ==================
+
       # Reference: https://github.com/devsoutinho/flutter-labs/blob/main/.github/workflows/releaser-bot.yml#L30
       - name: "[RELEASE]"
         if: contains(github.event.comment.body, '!release/')   # check the comment if it contains the keywords
