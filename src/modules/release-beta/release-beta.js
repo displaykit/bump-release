@@ -16,6 +16,7 @@ module.exports = {
         await createNewVersionCommit({
             newVersion,
             bumpType,
+            projectName: "",
             commitMessage: "commit message",
             commitBody: `## Changelog info...
             lorem ipsum dorme ...`,
