@@ -24,6 +24,10 @@ async function getPullRequest({
                     return acc;
                 }, ''),
             };
+        })
+        .catch((err) => {
+            console.log(err);
+            return err;
         });
 }
 
