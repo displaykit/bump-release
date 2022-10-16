@@ -13,6 +13,7 @@ program
 program.command('beta')
   .description('Release a beta version of your project inside a specific folder')
   .argument('<package location>', 'The path to the package that you want to release a beta version')
+  .option('--name <char>', `The name of the project that you are bumping. Default to to end folder of the location`)
   .option('--resolver <char>', `The resolver that you want to use to bump your package, avaiable resolvers: ${Object.keys(resolvers)}`)
   .action((packagePath = './', options) => {
     const { packageVersion, updatePackageVersion } = resolvers[options.resolver](packagePath);
