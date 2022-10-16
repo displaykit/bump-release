@@ -26,7 +26,6 @@ program.command('version')
   .option('--github-token <char>', `Token with the right permissions to be able to: read pr, comment on pr, create commit, create tag...`)
   .action(async (packagePath = './', options) => {
     // [Validations]
-    console.log(options);
     if(!options.resolver) throw new Error(`You need to specify a resolver, avaiable resolvers: ${Object.keys(resolvers)}`);
     if(!options.githubPullRequestNumber) throw new Error(`You need to specify a pull request number`);
     if(!options.githubRepoOwner) throw new Error(`You need to specify a github repository owner`);
