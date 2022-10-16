@@ -18,6 +18,7 @@ async function getPullRequest({
             console.log(res);
             return {
                 title: res.title,
+                body: res.body,
             };
         });
 }
