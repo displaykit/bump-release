@@ -30,6 +30,7 @@ module.exports = {
                     .replaceAll('\r', '\n')
                     .split('\n')
                     .slice(1)
+                    .join('\n');
                     
                 console.log(changelogBody);
                 const changelogNewContent = `
