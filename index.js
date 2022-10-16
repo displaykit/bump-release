@@ -18,9 +18,12 @@ program.command('beta')
   .action((packagePath = './', options) => {
     const packageName = options.name || packagePath.split('/').pop();
     const { packageVersion, updatePackageVersion } = resolvers[options.resolver](packagePath);
+    const commitMessage = "just a beta release";
+
     releaseBetaController({
       packageName: packageName,
       packageVersion,
+      commitMessage,
       updatePackageVersion
     })
       .then(({ newVersion }) => {
