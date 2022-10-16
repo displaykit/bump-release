@@ -26,22 +26,16 @@ module.exports = {
             },
             async updateChangelog({ newVersion, commitBody }) {
                 const changelogFilePath = path.resolve(packagePath, "CHANGELOG.md");
-                const changelogBody = commitBody;
+                // filter first line
+                const changelogBody = commitBody.split("\n").slice(1).join("\n");
                 const changelogNewContent = `
 ## ${newVersion}
 
 ${changelogBody}
                 `;
-                // const changelogFileContent = fs.readFileSync(changelogFilePath, { encoding: "utf-8" });
-                // const updatedContent = changelogFileContent
-                //     .split("\n")
-                //     .map((line) => {
-                //         if (line.startsWith("## ")) {
-                //             return `## ${newVersion}\n`;
-                //         }
-                //         return line;
-                //     })
-                //     .join("\n");
+                // TODO: Check if file exists
+                    // TODO: Read the content of the file
+                    // TODO: Add the new content on the top
 
                 const changelogFileContent = changelogNewContent;
                 fs.writeFileSync(changelogFilePath, changelogFileContent, { flag: 'w' });
