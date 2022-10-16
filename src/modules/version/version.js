@@ -17,6 +17,7 @@ module.exports = {
         const newVersion = bump(bumpType, packageVersion);
 
         await updatePackageVersion(newVersion); console.log("✅ - Package JSON Updated");
+        console.log("aaa", commitBody);
         await updateChangelog({
             newVersion,
             commitBody,
