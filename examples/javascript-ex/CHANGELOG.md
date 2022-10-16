@@ -1,7 +1,5 @@
 
-## 1.1.50
+## 1.1.51
 
-# Changelog
-
-This PR has a changelog that describes better what will really go to this new version
+# Changelog,,This PR has a changelog that describes better what will really go to this new version
                 
