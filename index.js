@@ -44,7 +44,7 @@ program.command('version')
     });
 
     const commitMessage = pullRequest.title || options.message;
-    const commitBody = pullRequest.body || options.body;
+    const commitBody = (pullRequest.body || options.body);
 
     versionController({
       projectName,

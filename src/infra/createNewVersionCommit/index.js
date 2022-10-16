@@ -1,6 +1,5 @@
 const { execSync } = require("child_process");
 
-
 const conventionalCommitTypeByVersion = {
     major: "feat",
     minor: "feat",
@@ -25,8 +24,12 @@ ${commitBody}
 
 > Version: ${newVersion}`;
 
+    console.log("Commit info: ", commitInfo)
+
     execSync(`git add .`, { encoding: "utf-8" });
-    execSync(`git commit -m '${commitInfo}'`, { encoding: "utf-8" });
+    execSync(`git commit -F- <<EOF
+    ${commitInfo}
+EOF`, { encoding: "utf-8" });
 
     return {
         commitTitle,
