@@ -20,7 +20,7 @@ module.exports = {
             newVersion,
             bumpType,
             projectName: "",
-            commitMessage: "commit message",
+            commitMessage: "just a beta release",
             commitBody: `## Changelog info...
             lorem ipsum dorme ...`,
         });
