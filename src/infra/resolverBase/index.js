@@ -28,6 +28,7 @@ module.exports = {
                 const changelogFilePath = path.resolve(packagePath, "CHANGELOG.md");
                 const changelogNewContent = `
 ## ${newVersion}
+
 ${changelogBody}
                 `;
                 // const changelogFileContent = fs.readFileSync(changelogFilePath, { encoding: "utf-8" });
