@@ -18,15 +18,18 @@ function createNewVersionCommit({
         ? `(${projectName})`
         : ""
     const type = conventionalCommitTypeByVersion[bumpType];
-
-    execSync(`git add .`, { encoding: "utf-8" });
-    execSync(`git commit -m '${type}${scope}: ${commitMessage}
+    const commitInfo = `${type}${scope}: ${commitMessage}
 
 ${commitBody}
 
-> Version: ${newVersion}'`, { encoding: "utf-8" });
+> Version: ${newVersion}`;
 
-    return true;
+    execSync(`git add .`, { encoding: "utf-8" });
+    execSync(`git commit -m '${commitInfo}'`, { encoding: "utf-8" });
+
+    return {
+        commitInfo,
+    };
 }
 
 module.exports = {
