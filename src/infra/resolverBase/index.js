@@ -23,6 +23,27 @@ module.exports = {
                     .join("\n");
 
                 fs.writeFileSync(packageFilePath, updatedContent);
+            },
+            async updateChangelog({ newVersion, commitBody }) {
+                const changelogFilePath = path.resolve(packagePath, "CHANGELOG.md");
+                const changelogBody = commitBody
+                    .replaceAll('\r\r', '\n')
+                    .replaceAll('\r', '\n')
+                    .split('\n')
+                    .slice(1)
+                    .join('\n');
+
+                console.log(changelogBody);
+                const changelogNewContent = `
+## ${newVersion}
+
+${changelogBody}
+                `;
+                if (fs.existsSync(changelogFilePath)) {
+                    const changelogFileContent = fs.readFileSync(changelogFilePath, { encoding: "utf-8" });
+                    const changelogFileNewContent = changelogNewContent + changelogFileContent;
+                    fs.writeFileSync(changelogFilePath, changelogFileNewContent, { flag: 'w' });
+                }
             }
         }
     }

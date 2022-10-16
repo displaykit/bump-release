@@ -1,9 +1,11 @@
 const { execSync } = require("child_process");
 
-async function createGitTags({ newVersion }) {
-    // git tag -a -m "My first action release" v1.1
-
-    return execSync("git tag -a -m");
+async function createGitTags({ projectName, newVersion, commitTitle }) {
+    const versionName = `${projectName}-v${newVersion}`;
+    execSync(`git tag -a -m '${commitTitle}' ${versionName}`, { encoding: "utf-8" });
+    return {
+        versionName,
+    };
 }
 
 

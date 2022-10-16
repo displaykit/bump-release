@@ -3,9 +3,9 @@ const { execSync } = require("child_process");
 
 const conventionalCommitTypeByVersion = {
     major: "feat",
-    patch: "feat",
-    beta: "feat",
-    minor: "fix",
+    minor: "feat",
+    patch: "fix",
+    beta: "beta",
 };
 function createNewVersionCommit({ 
     newVersion,
@@ -15,19 +15,26 @@ function createNewVersionCommit({
     commitBody,
 }) {
     const scope = Boolean(projectName)
-        ? `{${projectName}}`
+        ? `(${projectName})`
         : ""
     const type = conventionalCommitTypeByVersion[bumpType];
-
-    execSync(`git add .`, { encoding: "utf-8" });
-    execSync(`git commit -m '${type}${scope}: ${commitMessage}
+    const commitTitle = `${type}${scope}: ${commitMessage}`;
+    const commitInfo = `${commitTitle}
 
 ${commitBody}
-> Version: ${newVersion}'`, { encoding: "utf-8" });
 
-    return true;
+> Version: ${newVersion}`;
+
+    execSync(`git add .`, { encoding: "utf-8" });
+    execSync(`git commit -m '${commitInfo}'`, { encoding: "utf-8" });
+
+    return {
+        commitTitle,
+        commitInfo,
+    };
 }
 
 module.exports = {
     createNewVersionCommit,
+    bumpTypes: Object.keys(conventionalCommitTypeByVersion),
 };
