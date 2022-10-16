@@ -24,7 +24,7 @@ module.exports = {
             commitMessage,
             commitBody,
         });
-        await createGitTags({ newVersion, commitTitle }); console.log("✅ - Create Git Tags");
+        await createGitTags({ projectName, newVersion, commitTitle }); console.log("✅ - Create Git Tags");
         await pushToGitHub(); console.log("✅ - Pushed to GitHub with all tags");
         return {
             newVersion,
