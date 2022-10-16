@@ -43,13 +43,8 @@ program.command('version')
       githubToken: process.env.GITHUB_TOKEN || options.githubToken,
     });
 
-    const commitMessage = (pullRequest.title || options.message)
-      .replaceAll("'", "\'")
-      .replaceAll('"', '\"');
-
-    const commitBody = (pullRequest.body || options.body)
-      .replaceAll("'", "\'")
-      .replaceAll('"', '\"');
+    const commitMessage = pullRequest.title || options.message;
+    const commitBody = (pullRequest.body || options.body);
 
     versionController({
       projectName,
