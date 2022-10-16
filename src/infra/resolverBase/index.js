@@ -27,6 +27,7 @@ module.exports = {
             async updateChangelog({ newVersion, commitBody }) {
                 const changelogFilePath = path.resolve(packagePath, "CHANGELOG.md");
                 const changelogBody = commitBody
+                    .replaceAll('\r\r', '\n')
                     .replaceAll('\r', '\n')
                     .split('\n')
                     .slice(1)
