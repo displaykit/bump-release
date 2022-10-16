@@ -21,6 +21,7 @@ function createNewVersionCommit({
 
     execSync(`git add .`, { encoding: "utf-8" });
     execSync(`git commit -m '${type}${scope}: ${commitMessage}
+
 ${commitBody}
 > ${newVersion}'`, { encoding: "utf-8" });
 
