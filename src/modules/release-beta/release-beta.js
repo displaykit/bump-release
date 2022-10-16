@@ -22,6 +22,7 @@ module.exports = {
             lorem ipsum dorme ...`,
         });
         // await createGitTags();
+        // await pushToGitHub();
         return {
             newVersion,
         };
