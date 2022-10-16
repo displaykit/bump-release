@@ -11,12 +11,13 @@ module.exports = {
         packageVersion,
         commitMessage,
         commitBody,
-        updatePackageVersion
+        updatePackageVersion,
+        updateChangelog,
     }) {
         const newVersion = bump(bumpType, packageVersion);
 
         await updatePackageVersion(newVersion); console.log("✅ - Package JSON Updated");
-        // await updateChangelog();
+        await updateChangelog();
         const { commitTitle } = await createNewVersionCommit({
             newVersion,
             bumpType,
@@ -24,8 +25,8 @@ module.exports = {
             commitMessage,
             commitBody,
         });
-        await createGitTags({ projectName, newVersion, commitTitle }); console.log("✅ - Create Git Tags");
-        await pushToGitHub(); console.log("✅ - Pushed to GitHub with all tags");
+        // await createGitTags({ projectName, newVersion, commitTitle }); console.log("✅ - Create Git Tags");
+        // await pushToGitHub(); console.log("✅ - Pushed to GitHub with all tags");
         return {
             newVersion,
         };

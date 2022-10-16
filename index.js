@@ -34,7 +34,7 @@ program.command('version')
     // =================
 
     const projectName = options.name || packagePath.split('/').pop();
-    const { packageVersion, updatePackageVersion } = resolvers[options.resolver](packagePath);
+    const { packageVersion, updatePackageVersion, updateChangelog } = resolvers[options.resolver](packagePath);
     
     const pullRequest = await getPullRequest({
       repositoryOwner: options.githubRepoOwner,
@@ -53,6 +53,7 @@ program.command('version')
       commitMessage,
       commitBody,
       updatePackageVersion,
+      updateChangelog,
     })
       .then(({ newVersion }) => {
         console.log("✨ Package version updated with success! 🎉🎉🎉");
