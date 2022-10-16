@@ -24,7 +24,7 @@ module.exports = {
             commitBody: `## Changelog info...
             lorem ipsum dorme ...`,
         });
-        await createGitTags(); console.log("✅ - Create Git Tags");
+        await createGitTags({ newVersion }); console.log("✅ - Create Git Tags");
         await pushToGitHub();  console.log("✅ - Pushed to GitHub with all tags");
         return {
             newVersion,
