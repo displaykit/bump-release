@@ -32,19 +32,18 @@ module.exports = {
                     .split('\n')
                     .slice(1)
                     .join('\n');
-                    
+
                 console.log(changelogBody);
                 const changelogNewContent = `
 ## ${newVersion}
 
 ${changelogBody}
                 `;
-                // TODO: Check if file exists
-                // TODO: Read the content of the file
-                // TODO: Add the new content on the top
-
-                const changelogFileContent = changelogNewContent;
-                fs.writeFileSync(changelogFilePath, changelogFileContent, { flag: 'w' });
+                if (fs.existsSync(changelogFilePath)) {
+                    const changelogFileContent = fs.readFileSync(changelogFilePath, { encoding: "utf-8" });
+                    const changelogFileNewContent = changelogNewContent + changelogFileContent;
+                    fs.writeFileSync(changelogFilePath, changelogFileNewContent, { flag: 'w' });
+                }
             }
         }
     }
