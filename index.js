@@ -19,7 +19,7 @@ program.command('version')
   .option('--name <char>', `The name of the project that you are bumping. Default to to end folder of the location`)
   .option('--resolver <char>', `The resolver that you want to use to bump your package, avaiable resolvers: ${Object.keys(resolvers)}`)
   .option('--github-pull-request-number <char>', `Provide the number of the active pull request that you are working on`)
-  .option('--github-comment-token <char>', `???`)
+  // .option('--github-comment-token <char>', `???`)
   // .option('--github-commit-token <char>', `???`)
   .action(async (packagePath = './', options) => {
     if(!options.resolver) throw new Error(`You need to specify a resolver, avaiable resolvers: ${Object.keys(resolvers)}`);
@@ -31,7 +31,7 @@ program.command('version')
       repositoryOwner: 'devsoutinho',                  // TODO: Receive as parameter
       repositoryName: 'bump-release',                  // TODO: Receive as parameter
       pullRequestNumber: options.githubPullRequestNumber,
-      githubToken: '123' || process.env.GITHUB_TOKEN,  // TODO: Receive as parameter
+      githubToken: process.env.GITHUB_TOKEN,  // TODO: Receive as parameter
     });
 
     console.log(pullRequest);
