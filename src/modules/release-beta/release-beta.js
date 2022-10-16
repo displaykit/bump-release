@@ -8,6 +8,8 @@ module.exports = {
     async releaseBetaController({
         packageName,
         packageVersion,
+        commitMessage,
+        commitBody,
         updatePackageVersion
     }) {
         console.log(packageName);
