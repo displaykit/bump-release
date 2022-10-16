@@ -15,7 +15,7 @@ function createNewVersionCommit({
     commitBody,
 }) {
     const scope = Boolean(projectName)
-        ? `{${projectName}}`
+        ? `(${projectName})`
         : ""
     const type = conventionalCommitTypeByVersion[bumpType];
 
