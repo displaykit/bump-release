@@ -40,8 +40,8 @@ yarn --cwd ${__dirname} start version ${path.resolve(process.cwd(), projectPath)
 
 console.log(command);
 
-// const run = exec(command, { encoding: 'utf8' });
+const run = exec(command, { encoding: 'utf8' });
 
-// run.stdout.on('data', (data) => {
-//     console.log(data);
-// });
+run.stdout.on('data', (data) => {
+    console.log(data);
+});
