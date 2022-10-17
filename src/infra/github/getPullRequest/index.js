@@ -14,8 +14,8 @@ async function getPullRequest({
     })
         .then((response) => response.json())
         .then((res) => {
-            console.log(res.head.ref);
             return {
+                branch: res.head.ref,
                 title: res.title,
                 body: res.body?.split('\n').reduce((acc, curr) => {
                     if (acc.includes('Changelog') || curr.includes('Changelog')) {
