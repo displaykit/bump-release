@@ -56,9 +56,10 @@ program.command('version')
       updateChangelog,
       branch: pullRequest.branch,
     })
-      .then(({ newVersion }) => {
+      .then(({ newVersion, tagVersionName }) => {
         console.log(`✨ Package [${projectName}] version (${newVersion}) updated with success! 🎉🎉🎉`);
         console.log(`💻 Now you can install the version related to the tag: ${tagVersionName}`);
+        console.log(`https://github.com/${options.githubRepoOwner}/${options.githubRepoName}/releases/tag/${tagVersionName}`);
         // TODO: Comment on GitHub the new release avaiable.
       })
       .catch((err) => {
