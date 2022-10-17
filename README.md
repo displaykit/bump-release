@@ -7,4 +7,17 @@
 
 ## BLA?
 ...
-...
+
+## Releases
+
+### JavaScript
+
+```sh
+/release/minor javascript-ex ./examples/javascript-ex javascript
+```
+
+### Dart
+
+```sh
+/release/minor dart-ex ./examples/dart-ex dart
+```
