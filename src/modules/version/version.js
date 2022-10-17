@@ -48,7 +48,7 @@ module.exports = {
         console.log("✅ - Create Git Tags");
 
         console.log("⌛ - Pushed to GitHub with all tags");
-        await pushToGitHub();
+        await pushToGitHub({ branch });
         console.log("✅ - Pushed to GitHub with all tags");
 
         return {
