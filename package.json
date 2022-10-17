@@ -1,10 +1,14 @@
 {
-  "name": "@displaykit/releaser",
+  "name": "@displaykit/bump-release",
   "appName": "releaser",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "bin": {
+    "bump-release": "cli.js"
+  },
   "scripts": {
+    "setup": "npm link",
     "start": "node ./index.js",
     "dev": "nodemon --ignore ./examples ./index.js",
     "test": "jest",
