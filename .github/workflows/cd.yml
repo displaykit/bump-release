@@ -39,6 +39,7 @@ jobs:
     # ======================
     - name: Release NPM Registry
       run: |
+        echo "Deploy to npm..."
         echo '//npm.pkg.github.com/:_authToken=${{ env.NPM_TOKEN }}' > ~/.npmrc
         npm publish --token=${{ env.NPM_TOKEN }} --access=public
     - name: Release GitHub Registry
