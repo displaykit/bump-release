@@ -31,7 +31,7 @@ module.exports = {
                     .replaceAll('\r', '\n')
                     .split('\n')
                     .slice(1)
-                    .join('\n');
+                    .join('\n') || "No changelog specified for this version";
 
                 const changelogNewContent = `
 ## ${newVersion}
