@@ -5,9 +5,8 @@ on:
       - main
 
 env:
-  GIT_AUTHOR_NAME: "@bumper-bot"
   GITHUB_TOKEN: ${{ secrets.GH_GLOBAL_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_GLOBAL_TOKEN || secrets.GH_GLOBAL_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_GLOBAL_TOKEN }}
 
 jobs:
   test:
@@ -40,8 +39,9 @@ jobs:
     # ======================
     - name: Release NPM Registry
       run: |
+        echo '//npm.pkg.github.com/:_authToken=${{ env.NPM_TOKEN }}' > ~/.npmrc
         npm publish --token=${{ env.NPM_TOKEN }}
     - name: Release GitHub Registry
       run: |
         echo '//npm.pkg.github.com/:_authToken=${{ env.GITHUB_TOKEN }}' > ~/.npmrc
-        npm publish --@skynexui:registry=https://npm.pkg.github.com --force
+        npm publish --@displaykit:registry=https://npm.pkg.github.com --force
