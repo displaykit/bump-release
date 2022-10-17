@@ -16,7 +16,7 @@ async function getPullRequest({
         .then((res) => {
             return {
                 title: res.title,
-                body: res.body.split('\n').reduce((acc, curr) => {
+                body: res.body?.split('\n').reduce((acc, curr) => {
                     if (acc.includes('Changelog') || curr.includes('Changelog')) {
                         return acc + curr;
                     }
