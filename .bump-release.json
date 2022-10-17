@@ -1,7 +1,8 @@
 {
     "bump-release": {
         "path": "./",
-        "resolver": "javascript"
+        "resolver": "javascript",
+        "release": "yarn deploy:bump-release"
     },
     "javascript-ex": {
         "path": "./examples/javascript-ex",
