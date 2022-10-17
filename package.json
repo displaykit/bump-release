@@ -1,7 +1,7 @@
 {
   "name": "@displaykit/bump-release",
   "appName": "releaser",
-  "version": "1.1.0",
+  "version": "1.1.0-beta.11f558e6da5b143f48fa0a61e043b6f869a3a501",
   "main": "index.js",
   "license": "MIT",
   "bin": {
