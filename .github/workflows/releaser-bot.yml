@@ -27,4 +27,4 @@ jobs:
         if: contains(github.event.comment.body, '/release/') # support|major|minor|patch
         run: | 
           yarn setup
-          bump-release /release/beta ./examples/javascript-ex javascript
+          bump-release ${{ github.event.comment.body }}
