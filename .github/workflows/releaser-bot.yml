@@ -18,8 +18,6 @@ jobs:
     steps:
       ## [Common_CI_Steps]
       - uses: actions/checkout@v3
-        with:
-          submodules: recursive
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -28,8 +26,7 @@ jobs:
       - name: "[RELEASE]"
         if: contains(github.event.comment.body, '/release/') # support|major|minor|patch
         run: | 
-          yarn install
-          yarn setup
+          yarn install && yarn setup
           git config --global user.name "${{ env.COMMIT_USERNAME }}"
           git config --global user.email ${{ env.COMMIT_EMAIL }}
           bump-release ${{ github.event.comment.body }}
