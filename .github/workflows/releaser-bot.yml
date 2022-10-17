@@ -4,8 +4,7 @@ on:
     types: [created, edited]
 
 env:
-  GITHUB_REPO_OWNER: "displaykit"
-  GITHUB_REPO_NAME: "bump-release"
+  GITHUB_REPOSITORY: ${{ github.event.repository }}
   GITHUB_PR_NUMBER: ${{ github.event.issue.number }}
   GITHUB_TOKEN: ${{ secrets.GH_GLOBAL_TOKEN }}
   COMMIT_USERNAME: "CI Bot - DevSoutinho"
@@ -16,32 +15,20 @@ jobs:
     if: contains(github.event.comment.html_url, '/pull/')    # check if the comments come from pull request, exclude those from issue.
     runs-on: ubuntu-latest
     steps:
-      ## [Common_CI_Steps]
-      - uses: actions/github-script@v3
-        id: get-pr
-        with:
-          script: |
-            const request = {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number
-            }
-            core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
-            try {
-              const result = await github.pulls.get(request)
-              return result.data
-            } catch (err) {
-              core.setFailed(`Request failed with error ${err}`)
-            }
+      ## [Setup_CI]
+      # ======================
+      - name: Get branch name
+        id: branchName
+        run: echo ::set-output name=branch::$(echo $PR_COMMENT | cut -d "[" -f2 | cut -d "]" -f1)
+        env:
+          PR_COMMENT: ${{ github.event.comment.body }}
       - uses: actions/checkout@v2
-        with:
-          repository: ${{ fromJSON(steps.get-pr.outputs.result).head.repo.full_name }}
-          ref: ${{ fromJSON(steps.get-pr.outputs.result).head.sha }} # or .head.ref for branch name
+        with: 
+          ref: ${{ steps.branchName.outputs.branch }}
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      ## ==================
-
+      # ======================
       - name: "[RELEASE]"
         if: contains(github.event.comment.body, '/release/') # support|major|minor|patch
         run: | 

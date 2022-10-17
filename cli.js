@@ -8,6 +8,7 @@ const projectPath = process.argv[4];
 const resolver = process.argv[5];
 
 const bumpType = input.split('/')[2];
+const [GITHUB_REPO_OWNER, GITHUB_REPO_NAME] = process.env.GITHUB_REPOSITORY.split('/');
 
 console.log("[@displaykit/releaser]");
 
@@ -17,8 +18,8 @@ yarn start version ${projectPath} \
 --resolver=${resolver} \
 --name=${name} \
 --github-pull-request-number=${process.env.GITHUB_PR_NUMBER} \
---github-repo-owner=${process.env.GITHUB_REPO_OWNER} \
---github-repo-name=${process.env.GITHUB_REPO_NAME} \
+--github-repo-owner=${GITHUB_REPO_OWNER} \
+--github-repo-name=${GITHUB_REPO_NAME} \
 --github-token=${process.env.GITHUB_TOKEN}
 `;
 
