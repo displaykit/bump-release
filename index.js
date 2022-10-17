@@ -29,7 +29,8 @@ program.command('version')
   .option('--github-repo-name <char>', `What is the **name** of the repository that you want to release?`)
   .option('--github-token <char>', `Token with the right permissions to be able to: read pr, comment on pr, create commit, create tag...`)
   .action(async (packagePath = './', options) => {
-    if(options.projectCwd) console.log(execSync(`cd ${options.projectCwd}`, { encoding: "utf-8" }));
+
+    console.log(execSync(`cd ${options.projectCwd}`, { encoding: "utf-8" }));
 
     // [Validations]
     if(!options.resolver) throw new Error(`You need to specify a resolver, avaiable resolvers: ${Object.keys(resolvers)}`);
