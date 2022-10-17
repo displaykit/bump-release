@@ -13,6 +13,8 @@ console.log(CONFIG);
 // Example: bump-release /release/beta javascript-ex ./examples/javascript-ex javascript
 const input = process.argv[2];
 const name = process.argv[3];
+console.log("Project Name: ", name);
+
 const projectPath = process.argv[4] || CONFIG[name].path;
 const resolver = process.argv[5]  || CONFIG[name].resolver;
 
