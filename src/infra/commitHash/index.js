@@ -1,5 +1,5 @@
 const { execSync } = require("child_process");
 
 module.exports = {
-    getCommitHash: () => execSync("git rev-parse HEAD", { encoding: "utf-8" }),
+    getCommitHash: ({ cwd }) => execSync("git rev-parse HEAD", { encoding: "utf-8", cwd: cwd }).trim(),
 }

@@ -15,8 +15,8 @@ module.exports = {
 
         return {
             packageVersion: packageFile.version,
-            async updatePackageVersion(newVersion) {
-                const packageFileContent = fs.readFileSync(packageFilePath, { encoding: "utf-8" });
+            async updatePackageVersion(newVersion, { cwd }) {
+                const packageFileContent = fs.readFileSync(packageFilePath, { encoding: "utf-8", cwd });
                 const updatedContent = packageFileContent
                     .split("\n")
                     .map(mapVersionLineToNewVersion(newVersion))
@@ -24,7 +24,7 @@ module.exports = {
 
                 fs.writeFileSync(packageFilePath, updatedContent);
             },
-            async updateChangelog({ newVersion, commitBody }) {
+            async updateChangelog({ newVersion, commitBody, cwd }) {
                 const changelogFilePath = path.resolve(packagePath, "CHANGELOG.md");
                 const changelogBody = commitBody
                     ?.replaceAll('\r\r', '\n')
@@ -38,12 +38,12 @@ module.exports = {
 
 ${changelogBody}
                 `;
-                if (fs.existsSync(changelogFilePath)) {
-                    const changelogFileContent = fs.readFileSync(changelogFilePath, { encoding: "utf-8" });
+                if (fs.existsSync(changelogFilePath, { cwd })) {
+                    const changelogFileContent = fs.readFileSync(changelogFilePath, { encoding: "utf-8", cwd });
                     const changelogFileNewContent = changelogNewContent + changelogFileContent;
-                    fs.writeFileSync(changelogFilePath, changelogFileNewContent, { flag: 'w' });
+                    fs.writeFileSync(changelogFilePath, changelogFileNewContent, { flag: 'w', cwd });
                 } else {
-                    fs.writeFileSync(changelogFilePath, changelogNewContent, { flag: 'w' });
+                    fs.writeFileSync(changelogFilePath, changelogNewContent, { flag: 'w', cwd });
                 }
             }
         }

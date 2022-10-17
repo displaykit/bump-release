@@ -30,8 +30,8 @@ function major(currentVersion) { // "[RELEASE-MAJOR X.0.0]"
     }, "");
 }
 
-function beta(currentVersion, getCommitHash = getCommitHashModule) { // [RELEASE-beta 0.0.0-beta.X]
-    const hash = getCommitHash();
+function beta(currentVersion, getCommitHash = getCommitHashModule, projectCwd) { // [RELEASE-beta 0.0.0-beta.X]
+    const hash = getCommitHash({ cwd: projectCwd });
     if(currentVersion.includes(hash)) return currentVersion;
     if(currentVersion.includes("-beta.")) {
         const [baseVersion] = currentVersion.split("-beta.");
@@ -49,7 +49,7 @@ const bumpNameToVersion = {
 }
 
 module.exports = {
-    bump(version, currentVersion, getCommitHashFn) {
-        return bumpNameToVersion[version](currentVersion, getCommitHashFn).trim().replace('\n', '');
+    bump(version, currentVersion, getCommitHashFn, projectCwd) {
+        return bumpNameToVersion[version](currentVersion, getCommitHashFn, projectCwd).trim().replace('\n', '');
     }
 }

@@ -12,6 +12,7 @@ function createNewVersionCommit({
     projectName,
     commitMessage,
     commitBody,
+    cwd
 }) {
     const scope = Boolean(projectName)
         ? `(${projectName})`
@@ -24,10 +25,10 @@ ${commitBody}
 
 > Version: ${newVersion}`;
 
-    execSync(`git add .`, { encoding: "utf-8" });
+    execSync(`git add .`, { encoding: "utf-8", cwd });
     execSync(`git commit -F- <<EOF
     ${commitInfo}
-EOF`, { encoding: "utf-8" });
+EOF`, { encoding: "utf-8", cwd });
 
     return {
         commitTitle,

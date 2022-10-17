@@ -62,6 +62,7 @@ program.command('version')
       updatePackageVersion,
       updateChangelog,
       branch: pullRequest.branch,
+      projectCwd: options.projectCwd
     })
       .then(({ newVersion, tagVersionName }) => {
         console.log(`✨ Package [${projectName}] version (${newVersion}) updated with success! 🎉🎉🎉`);
