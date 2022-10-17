@@ -1,4 +1,5 @@
 const { Command } = require('commander');
+const { execSync } = require("child_process");
 const pkg = require("./package.json");
 const { bumpTypes } = require("./src/infra/createNewVersionCommit");
 const { getPullRequest } = require("./src/infra/github/getPullRequest");
@@ -23,10 +24,13 @@ program.command('version')
   .option('--message <char>', `The message that you want to use to commit your changes`)
   .option('--body <char>', `The body of the pull request that you want to create with this new version, it will be used in the changelog also. Provide the --github-* parameters to a more automated process`)
   .option('--github-pull-request-number <char>', `Provide the number of the active pull request that you are working on`)
+  .option('--project-cwd <char>', `Where your project is?`)
   .option('--github-repo-owner <char>', `Who is the **owner** of the repository that you want to release?`)
   .option('--github-repo-name <char>', `What is the **name** of the repository that you want to release?`)
   .option('--github-token <char>', `Token with the right permissions to be able to: read pr, comment on pr, create commit, create tag...`)
   .action(async (packagePath = './', options) => {
+    if(options.projectCwd) console.log(execSync(`cd ${options.projectCwd}`, { encoding: "utf-8" }));
+
     // [Validations]
     if(!options.resolver) throw new Error(`You need to specify a resolver, avaiable resolvers: ${Object.keys(resolvers)}`);
     if(!options.githubPullRequestNumber) throw new Error(`You need to specify a pull request number`);

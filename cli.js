@@ -27,8 +27,9 @@ const [GITHUB_REPO_OWNER, GITHUB_REPO_NAME] = process.env.GITHUB_REPOSITORY?.spl
 
 console.log("[@displaykit/releaser]");
 
+const projectCwd = path.resolve(process.cwd(), projectPath);
 const command = `
-yarn --cwd ${__dirname} start version ${path.resolve(process.cwd(), projectPath)} \
+yarn --cwd ${__dirname} start version ${projectCwd} \
 --type=${bumpType} \
 --resolver=${resolver} \
 --name=${name} \
@@ -36,6 +37,7 @@ yarn --cwd ${__dirname} start version ${path.resolve(process.cwd(), projectPath)
 --github-repo-owner=${GITHUB_REPO_OWNER} \
 --github-repo-name=${GITHUB_REPO_NAME} \
 --github-token=${process.env.GITHUB_TOKEN}
+--project-cwd=${projectCwd}
 `;
 
 console.log(command);
