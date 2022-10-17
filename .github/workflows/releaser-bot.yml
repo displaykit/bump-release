@@ -1,7 +1,7 @@
 name: PR comment
 on:
   issue_comment:                                     
-    types: [created, edited, deleted]
+    types: [created, edited]
 
 env:
   GH_TOKEN: ${{ secrets.GH_TOKENS }}
@@ -24,7 +24,7 @@ jobs:
 
       # Reference: https://github.com/devsoutinho/flutter-labs/blob/main/.github/workflows/releaser-bot.yml#L30
       - name: "[RELEASE]"
-        if: contains(github.event.comment.body, '!release/') # support|major|minor|patch
+        if: contains(github.event.comment.body, '/release/') # support|major|minor|patch
         run: | 
-          echo "IMPLEMENT ME"
-          node ./chatbot.js ${{ github.event.comment.body }}
+          yarn setup
+          bump-release /release/beta ./examples/javascript-ex javascript
