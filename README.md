@@ -10,18 +10,24 @@
     - The output must be a JSON with a key version 
 
 ## Releases
-> ...
+> To run a release, just made one of the comments in a PR
 
 ### JavaScript
 
 ```sh
 /release/minor javascript-ex ./examples/javascript-ex javascript
+
+## Short version based in .bump-release.json
+/release/minor javascript-ex
 ```
 
 ### Dart
 
 ```sh
 /release/minor dart-ex ./examples/dart-ex dart
+
+## Short version based in .bump-release.json
+/release/minor dart-ex
 ```
 
 ## Roadmap
