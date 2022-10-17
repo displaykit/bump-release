@@ -3,6 +3,8 @@ const { getCommitHash } = require("./index.js");
 
 describe('getCommitHash()', () => {
     it('returns the hash of the current commit', () => {
-        expect(getCommitHash()).toEqual(execSync("git rev-parse HEAD", { encoding: "utf-8" }));
+        const output = getCommitHash({ cwd: process.cwd() });
+        const expectation = execSync("git rev-parse HEAD", { encoding: "utf-8", cwd: process.cwd() });
+        expect(output).toEqual(expectation.trim());
     })
 });
