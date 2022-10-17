@@ -9,7 +9,7 @@ module.exports = {
                 return (line) => {
                     if(line.includes("version")) {
                         const [versionLineKey] = line.split(":");
-                        return `${versionLineKey}: "${newVersion}"`;
+                        return `${versionLineKey}: "${newVersion}",`;
                     }
                     return line;
                 }
