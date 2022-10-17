@@ -7,6 +7,8 @@ const resolvers = require("./src/resolvers");
 
 const program = new Command();
 
+console.log(`[CLI] ${pkg.appName} v${pkg.version}`);
+
 program
   .name(pkg.appName)
   .description('CLI to release your project using GitHub, in a easy way')
