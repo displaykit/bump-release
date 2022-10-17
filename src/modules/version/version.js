@@ -13,7 +13,9 @@ module.exports = {
         commitBody,
         updatePackageVersion,
         updateChangelog,
+        branch,
     }) {
+        console.log(branch);
         const newVersion = bump(bumpType, packageVersion);
 
         console.log("⌛ - Package JSON");
