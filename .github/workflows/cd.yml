@@ -40,7 +40,8 @@ jobs:
     - name: Release NPM Registry
       run: |
         echo "Deploy to npm..."
-        npm publish --token=${{ env.NPM_TOKEN }}
+        echo '//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN }}' > .npmrc
+        npm publish --@displaykit:registry=https://registry.npmjs.org
     - name: Release GitHub Registry
       run: |
         echo '//npm.pkg.github.com/:_authToken=${{ env.GITHUB_TOKEN }}' > ~/.npmrc
