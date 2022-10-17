@@ -7,7 +7,7 @@ env:
   GITHUB_REPO_OWNER: "displaykit"
   GITHUB_REPO_NAME: "bump-release"
   GITHUB_PR_NUMBER: ${{ github.event.issue.number }}
-  GITHUB_TOKEN: ${{ secrets.GH_TOKENS }}
+  GITHUB_TOKEN: ${{ secrets.GH_GLOBAL_TOKEN }}
 
 jobs:
   comment_checker:
