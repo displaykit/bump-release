@@ -25,8 +25,8 @@ jobs:
         yarn test
 
   release:
-    # needs: 
-    #   - test
+    needs: 
+     - test
     name: Release [JS NPM & GitHub Registry]
     runs-on: ubuntu-latest
     steps:
