@@ -13,6 +13,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+    ## [Setup_CI]
+    # ======================
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    # ======================
     - name: "Start: Unit Testing"
       run: |
         yarn install
@@ -24,10 +31,17 @@ jobs:
     name: Release [JS NPM & GitHub Registry]
     runs-on: ubuntu-18.04
     steps:
-      - name: Release NPM Registry
-        run: |
-          npm publish --token=${{ secrets.NPM_TOKEN }}
-      - name: Release GitHub Registry
-        run: |
-          echo '//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}' > ~/.npmrc
-          yarn release:github_registry
+    ## [Setup_CI]
+    # ======================
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    # ======================
+    - name: Release NPM Registry
+      run: |
+        npm publish --token=${{ secrets.NPM_TOKEN }}
+    - name: Release GitHub Registry
+      run: |
+        echo '//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}' > ~/.npmrc
+        npm publish --@skynexui:registry=https://npm.pkg.github.com --force
