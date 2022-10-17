@@ -29,7 +29,7 @@ jobs:
     needs: 
       - test
     name: Release [JS NPM & GitHub Registry]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     ## [Setup_CI]
     # ======================
