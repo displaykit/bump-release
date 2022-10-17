@@ -8,7 +8,7 @@ env:
   GITHUB_REPO_NAME: "bump-release"
   GITHUB_PR_NUMBER: ${{ github.event.issue.number }}
   GITHUB_TOKEN: ${{ secrets.GH_GLOBAL_TOKEN }}
-  COMMIT_EMAIL: 13791385+omariosouto@users.noreply.github.com
+  COMMIT_EMAIL: "13791385+omariosouto@users.noreply.github.com"
   COMMIT_USERNAME: "CI Bot - DevSoutinho"
 
 jobs:
