@@ -1,4 +1,8 @@
 
+## 1.2.59
+
+This is a test, but could be better!
+                
 ## 1.1.59
 
 This PR has a changelog that describes better what will really go to this new version
