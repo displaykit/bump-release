@@ -54,6 +54,7 @@ program.command('version')
       commitBody,
       updatePackageVersion,
       updateChangelog,
+      branch: pullRequest.branch,
     })
       .then(({ newVersion }) => {
         console.log("✨ Package version updated with success! 🎉🎉🎉");
