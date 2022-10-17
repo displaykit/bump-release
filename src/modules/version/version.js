@@ -2,6 +2,7 @@ const { bump } = require("../../infra/bump");
 const { createNewVersionCommit } = require("../../infra/createNewVersionCommit");
 const { pushToGitHub } = require("../../infra/pushToGitHub");
 const { createGitTags } = require("../../infra/createGitTags");
+const { checkoutTo } = require("../../infra/checkoutTo")
 
 
 module.exports = {
@@ -15,7 +16,10 @@ module.exports = {
         updateChangelog,
         branch,
     }) {
-        console.log(branch);
+        console.log("⌛ - Checkout to correct branch");
+        await checkoutTo({ branch });
+        console.log("✅ - Package JSON");
+
         const newVersion = bump(bumpType, packageVersion);
 
         console.log("⌛ - Package JSON");
