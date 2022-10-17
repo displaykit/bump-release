@@ -57,8 +57,8 @@ program.command('version')
       branch: pullRequest.branch,
     })
       .then(({ newVersion }) => {
-        console.log("✨ Package version updated with success! 🎉🎉🎉");
-        console.log(`💻 Now you can install the version: ${newVersion}`);
+        console.log(`✨ Package [${projectName}] version (${newVersion}) updated with success! 🎉🎉🎉`);
+        console.log(`💻 Now you can install the version related to the tag: ${tagVersionName}`);
         // TODO: Comment on GitHub the new release avaiable.
       })
       .catch((err) => {
