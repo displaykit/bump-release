@@ -26,5 +26,6 @@ jobs:
       - name: "[RELEASE]"
         if: contains(github.event.comment.body, '/release/') # support|major|minor|patch
         run: | 
+          yarn install
           yarn setup
           bump-release ${{ github.event.comment.body }}
