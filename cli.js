@@ -12,7 +12,7 @@ const bumpType = input.split('/')[2];
 console.log("[@displaykit/releaser]");
 
 const command = `
-yarn dev version ${projectPath} \
+yarn start version ${projectPath} \
 --type=${bumpType} \
 --resolver=${resolver} \
 --name=${name} \
