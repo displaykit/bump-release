@@ -1,7 +1,7 @@
 const { execSync } = require("child_process");
 
-async function pushToGitHub() {
-    execSync("git push -u origin HEAD --follow-tags", { encoding: "utf-8" });
+async function pushToGitHub({ branch }) {
+    execSync(`git push -u origin HEAD:${branch} --follow-tags`, { encoding: "utf-8" });
     return true;
 }
 
