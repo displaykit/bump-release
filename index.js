@@ -61,6 +61,7 @@ program.command('version')
         // TODO: Comment on GitHub the new release avaiable.
       })
       .catch((err) => {
+        console.error(err);
         throw err;
       })
   });
