@@ -1,6 +1,6 @@
 name: dart
 description: You don't need to be worried just because you have to support multiple screens
-version: 2.1.47
+version: 2.1.47-beta.3f65115dd63b0b40ad027b653ab480416baf1356
 
 homepage: https://github.com/DisplayKit/responsive_styles
 
