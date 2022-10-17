@@ -8,6 +8,8 @@ env:
   GITHUB_REPO_NAME: "bump-release"
   GITHUB_PR_NUMBER: ${{ github.event.issue.number }}
   GITHUB_TOKEN: ${{ secrets.GH_GLOBAL_TOKEN }}
+  COMMIT_EMAIL: 13791385+omariosouto@users.noreply.github.com
+  COMMIT_USERNAME: "CI Bot - DevSoutinho"
 
 jobs:
   comment_checker:
@@ -23,10 +25,11 @@ jobs:
           node-version: 18
       ## ==================
 
-      # Reference: https://github.com/devsoutinho/flutter-labs/blob/main/.github/workflows/releaser-bot.yml#L30
       - name: "[RELEASE]"
         if: contains(github.event.comment.body, '/release/') # support|major|minor|patch
         run: | 
           yarn install
           yarn setup
+          git config --global user.email $COMMIT_EMAIL
+          git config --global user.name $COMMIT_USERNAME
           bump-release ${{ github.event.comment.body }}
