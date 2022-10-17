@@ -24,8 +24,6 @@ ${commitBody}
 
 > Version: ${newVersion}`;
 
-    console.log("Commit info: ", commitInfo)
-
     execSync(`git add .`, { encoding: "utf-8" });
     execSync(`git commit -F- <<EOF
     ${commitInfo}
