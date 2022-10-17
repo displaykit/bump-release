@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// const { execSync } = require('child_process');
+const { execSync } = require('child_process');
 
 // Example: bump-release /release/beta javascript-ex ./examples/javascript-ex javascript
 const input = process.argv[2];
