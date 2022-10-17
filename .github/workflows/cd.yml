@@ -39,7 +39,7 @@ jobs:
       run: |
         echo "Deploy to npm..."
         echo '//registry.npmjs.org/:_authToken=${{ env.NPM_TOKEN }}' > ~/.npmrc
-        yarn publish --non-interactive --@displaykit:registry=https://registry.npmjs.org
+        npm publish --non-interactive --@displaykit:registry=https://registry.npmjs.org
     - name: Release GitHub Registry
       run: |
         echo '//npm.pkg.github.com/:_authToken=${{ env.GITHUB_TOKEN }}' > ~/.npmrc
