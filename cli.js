@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require("path");
 
 console.log('npx installation path', __dirname);
+console.log('exec path', process.cwd());
 
 let CONFIG;
 const BUMP_RELEASE_CONFIG_PATH = process.env.BUMP_RELEASE_CONFIG_PATH || path.resolve('.bump-release.json');
@@ -27,7 +28,7 @@ const [GITHUB_REPO_OWNER, GITHUB_REPO_NAME] = process.env.GITHUB_REPOSITORY?.spl
 console.log("[@displaykit/releaser]");
 
 const command = `
-yarn --cwd ${__dirname} start version ${projectPath} \
+yarn --cwd ${__dirname} start version ${path.resolve(process.cwd(), projectPath)} \
 --type=${bumpType} \
 --resolver=${resolver} \
 --name=${name} \
