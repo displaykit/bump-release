@@ -27,7 +27,7 @@ module.exports = {
         });
         console.log("✅ - Changelog");
 
-        console.log("⌛ - Changelog");
+        console.log("⌛ - Create new version commit");
         const { commitTitle } = await createNewVersionCommit({
             newVersion,
             bumpType,
@@ -35,7 +35,7 @@ module.exports = {
             commitMessage,
             commitBody,
         });
-        console.log("✅ - Changelog");
+        console.log("✅ - Create new version commit");
 
         console.log("⌛ - Create Git Tags");
         await createGitTags({ projectName, newVersion, commitTitle });
