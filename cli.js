@@ -45,3 +45,7 @@ const run = exec(command, { encoding: 'utf8' });
 run.stdout.on('data', (data) => {
     console.log(data);
 });
+
+run.stderr.on('data', (data) => {
+    console.log(data);
+});
