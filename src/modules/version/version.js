@@ -16,11 +16,18 @@ module.exports = {
     }) {
         const newVersion = bump(bumpType, packageVersion);
 
-        await updatePackageVersion(newVersion); console.log("✅ - Package JSON Updated");
+        console.log("⌛ - Package JSON");
+        await updatePackageVersion(newVersion);
+        console.log("✅ - Package JSON");
+        
+        console.log("⌛ - Changelog (don not run for 'beta')");
         bumpType !== 'beta' && await updateChangelog({
             newVersion,
             commitBody,
         });
+        console.log("✅ - Changelog");
+
+        console.log("⌛ - Changelog");
         const { commitTitle } = await createNewVersionCommit({
             newVersion,
             bumpType,
@@ -28,8 +35,16 @@ module.exports = {
             commitMessage,
             commitBody,
         });
-        await createGitTags({ projectName, newVersion, commitTitle }); console.log("✅ - Create Git Tags");
-        await pushToGitHub(); console.log("✅ - Pushed to GitHub with all tags");
+        console.log("✅ - Changelog");
+
+        console.log("⌛ - Create Git Tags");
+        await createGitTags({ projectName, newVersion, commitTitle });
+        console.log("✅ - Create Git Tags");
+
+        console.log("⌛ - Pushed to GitHub with all tags");
+        await pushToGitHub();
+        console.log("✅ - Pushed to GitHub with all tags");
+
         return {
             newVersion,
         };

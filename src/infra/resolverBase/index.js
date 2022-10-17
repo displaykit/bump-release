@@ -25,7 +25,6 @@ module.exports = {
                 fs.writeFileSync(packageFilePath, updatedContent);
             },
             async updateChangelog({ newVersion, commitBody }) {
-                console.log("HEY EU SOU O CHANGELOG");
                 const changelogFilePath = path.resolve(packagePath, "CHANGELOG.md");
                 const changelogBody = commitBody
                     .replaceAll('\r\r', '\n')
@@ -34,7 +33,6 @@ module.exports = {
                     .slice(1)
                     .join('\n');
 
-                console.log(changelogBody);
                 const changelogNewContent = `
 ## ${newVersion}
 
