@@ -1,7 +1,7 @@
 {
   "name": "@displaykit/bump-release",
   "description": "Just a small project to...",
-  "version": "1.3.7-beta.5ed63e28164c708bc6dc1a57b54f6e0e375b1b52",
+  "version": "1.3.9",
   "private": false,
   "repository": {
     "type": "git",
