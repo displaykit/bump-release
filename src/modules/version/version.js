@@ -15,6 +15,7 @@ module.exports = {
         updatePackageVersion,
         updateChangelog,
         branch,
+        projectCwd,
     }) {
         // console.log("⌛ - Checkout to correct branch");
         // await checkoutTo({ branch });
