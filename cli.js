@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { execSync } = require('child_process');
+const { exec } = require('child_process');
 
 // Example: bump-release /release/beta javascript-ex ./examples/javascript-ex javascript
 const input = process.argv[2];
@@ -24,4 +24,8 @@ yarn dev version ${projectPath} \
 
 console.log(command);
 
-const output = execSync(command, { encoding: 'utf8' });
+const run = exec(command, { encoding: 'utf8' });
+
+run.stdout.on('data', (data) => {
+    console.log(data);
+});
