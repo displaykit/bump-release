@@ -36,7 +36,7 @@ yarn --cwd ${__dirname} start version ${projectCwd} \
 --github-pull-request-number=${process.env.GITHUB_PR_NUMBER} \
 --github-repo-owner=${GITHUB_REPO_OWNER} \
 --github-repo-name=${GITHUB_REPO_NAME} \
---github-token=${process.env.GITHUB_TOKEN}
+--github-token=${process.env.GITHUB_TOKEN} \
 --project-cwd=${projectCwd}
 `;
 
