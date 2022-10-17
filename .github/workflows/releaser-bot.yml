@@ -8,8 +8,8 @@ env:
   GITHUB_REPO_NAME: "bump-release"
   GITHUB_PR_NUMBER: ${{ github.event.issue.number }}
   GITHUB_TOKEN: ${{ secrets.GH_GLOBAL_TOKEN }}
-  COMMIT_EMAIL: "13791385+omariosouto@users.noreply.github.com"
   COMMIT_USERNAME: "CI Bot - DevSoutinho"
+  COMMIT_EMAIL: "13791385+omariosouto@users.noreply.github.com"
 
 jobs:
   comment_checker:
@@ -30,6 +30,6 @@ jobs:
         run: | 
           yarn install
           yarn setup
+          git config --global user.name "${{ env.COMMIT_USERNAME }}"
           git config --global user.email ${{ env.COMMIT_EMAIL }}
-          git config --global user.name ${{ env.COMMIT_USERNAME }}
           bump-release ${{ github.event.comment.body }}
