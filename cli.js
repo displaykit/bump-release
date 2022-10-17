@@ -24,4 +24,4 @@ yarn dev version ${projectPath} \
 
 console.log(command);
 
-// const output = execSync(, { encoding: 'utf8' });
+const output = execSync(command, { encoding: 'utf8' });
