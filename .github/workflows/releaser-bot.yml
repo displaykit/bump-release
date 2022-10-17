@@ -17,19 +17,16 @@ jobs:
     steps:
       ## [Setup_CI]
       # ======================
-      - name: Get branch name
-        id: branchName
-        run: echo ::set-output name=branch::$(echo $PR_COMMENT | cut -d "[" -f2 | cut -d "]" -f1)
+      - uses: actions/checkout@v3
+      - name: "[Checkout to Pull Request]"
+        run: hub pr checkout ${{ github.event.issue.number }}
         env:
-          PR_COMMENT: ${{ github.event.comment.body }}
-      - uses: actions/checkout@v2
-        with: 
-          ref: ${{ steps.branchName.outputs.branch }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v3
         with:
           node-version: 18
       # ======================
-      - name: "[RELEASE]"
+      - name: "[RELEASE Script]"
         if: contains(github.event.comment.body, '/release/') # support|major|minor|patch
         run: | 
           cat .git/HEAD
