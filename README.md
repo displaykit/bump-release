@@ -1,3 +1,5 @@
+# @displaykit/bump-release
+
 ## How to add a new language?
 - Add a new file to the resolvers map `src/resolvers/index.js`
 
