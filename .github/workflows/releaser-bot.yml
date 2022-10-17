@@ -4,6 +4,7 @@ on:
     types: [created, edited]
 
 env:
+  BUMP_RELEASE_CONFIG_PATH: "./.bump-release.json"
   GITHUB_REPOSITORY: "displaykit/bump-release"
   GITHUB_PR_NUMBER: ${{ github.event.issue.number }}
   GITHUB_TOKEN: ${{ secrets.GH_GLOBAL_TOKEN }}

@@ -1,0 +1,14 @@
+{
+    "bump-release": {
+        "path": "./",
+        "resolver": "javascript"
+    },
+    "javascript-ex": {
+        "path": "./examples/javascript-ex",
+        "resolver": "javascript"
+    },
+    "dart-ex": {
+        "path": "./examples/dart-ex",
+        "resolver": "dart"
+    }
+}

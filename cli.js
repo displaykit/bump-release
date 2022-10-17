@@ -1,11 +1,20 @@
 #!/usr/bin/env node
 const { exec } = require('child_process');
+const fs = require('fs');
+
+let CONFIG;
+const BUMP_RELEASE_CONFIG_PATH = process.env.BUMP_RELEASE_CONFIG_PATH || './.bump-release.json';
+if(fs.existsSync(BUMP_RELEASE_CONFIG_PATH)) {
+    CONFIG = JSON.parse(fs.readFileSync(BUMP_RELEASE_CONFIG_PATH, 'utf8'));
+}
+
+console.log(CONFIG);
 
 // Example: bump-release /release/beta javascript-ex ./examples/javascript-ex javascript
 const input = process.argv[2];
 const name = process.argv[3];
-const projectPath = process.argv[4];
-const resolver = process.argv[5];
+const projectPath = process.argv[4] || CONFIG[name].path;
+const resolver = process.argv[5]  || CONFIG[name].resolver;
 
 const bumpType = input.split('/')[2];
 const [GITHUB_REPO_OWNER, GITHUB_REPO_NAME] = process.env.GITHUB_REPOSITORY.split('/');
