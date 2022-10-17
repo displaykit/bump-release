@@ -1,4 +1,4 @@
-# @displaykit/bump-release
+# @displaykit/bump-release:
 
 > Add a better description here
 
