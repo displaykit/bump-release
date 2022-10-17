@@ -23,3 +23,13 @@
 ```sh
 /release/minor dart-ex ./examples/dart-ex dart
 ```
+
+## Roadmap
+
+- [ ] Add GitHub comments to invite to check the release tag created
+- [ ] Add GitHub releases support
+    - Try to promote an existing tag to a release
+- [ ] Create GitHub App and abstraction to get tokens from it "agnostically"
+- [ ] Add more languages
+- [ ] Add more tests
+- [ ] Add more documentation
