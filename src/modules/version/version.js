@@ -16,9 +16,9 @@ module.exports = {
         updateChangelog,
         branch,
     }) {
-        console.log("⌛ - Checkout to correct branch");
-        await checkoutTo({ branch });
-        console.log("✅ - Package JSON");
+        // console.log("⌛ - Checkout to correct branch");
+        // await checkoutTo({ branch });
+        // console.log("✅ - Package JSON");
 
         const newVersion = bump(bumpType, packageVersion);
 
